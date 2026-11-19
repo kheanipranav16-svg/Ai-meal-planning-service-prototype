@@ -85,23 +85,8 @@ possible plan. That is a nice limitation to discuss in your report.
 - `buildPrompt()`: lists only sellable ingredients plus the customer's wishes.
 - `validateLlmPlan()`: checks that every ingredient the LLM names is really in stock.
 
-You still need to send the prompt to the API your course allows, `JSON.parse` the reply
-inside a `try/catch`, and run `validateLlmPlan()` on it. If validation fails, fall back to
-`buildMealPlan()`. Keep the API key in an environment variable (`.env` is git-ignored),
-never in the code. The rule: **the LLM suggests, your code verifies.**
 
-## Running it in Visual Studio Code
 
-1. Install Node.js 22.13 or newer from nodejs.org (check with `node -v` in a terminal).
-2. In VS Code choose **File > Open Folder** and pick this `meal-planner` folder.
-3. Open the built-in terminal (**Terminal > New Terminal**) and run:
-   ```bash
-   npm run seed
-   npm start
-   ```
-4. Open http://localhost:3000 in your browser. Run `npm test` to check everything works.
-
-## The chatbot (`src/chat.js`)
 
 The customer types normal sentences; the bot keeps their preferences and builds a plan.
 
@@ -130,7 +115,7 @@ sum over its ingredients divided by `servings`. A daily target is converted to d
    Turn it on by copying `.env.example` to `.env` and filling in `ANTHROPIC_API_KEY`, then restart.
    If the API call fails, the bot falls back to the rules automatically.
 
-Claude only extracts preferences. Everything it returns goes through `patchFromLlmJson()`,
+ Everything it returns goes through `patchFromLlmJson()`,
 which drops invalid values, and prices, stock, discounts and recipes always come from your
 database and code. Say this in your report: *the AI understands, the code decides.*
 
