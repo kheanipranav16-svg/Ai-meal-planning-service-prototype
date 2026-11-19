@@ -5,7 +5,7 @@ discounts on ingredients that need to be sold (about to expire, or overstocked),
 builds a meal plan that uses those ingredients first.
 
 Written in JavaScript with **zero dependencies**: Node's built-in `http` server and
-`node:sqlite` database. Needs **Node 22.13 or newer**.
+`node:sqlite` database. 
 
 ## Run it
 
